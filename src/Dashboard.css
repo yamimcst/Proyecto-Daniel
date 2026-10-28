@@ -249,3 +249,6 @@
   .sidebar nav { flex-direction: row; flex-wrap: wrap; }
   .logout { margin-top: 0; }
 }
+
+.client-list li.clickable { cursor: pointer; transition: background 0.2s; }
+.client-list li.clickable:hover { background: #e8edfb; }

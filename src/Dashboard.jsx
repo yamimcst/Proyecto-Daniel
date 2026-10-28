@@ -126,7 +126,12 @@ export default function Dashboard() {
           ) : (
             <ul className="client-list">
               {filtrados.map((c) => (
-                <li key={c.id}>
+                <li key={c.id}
+                  className="clickable" 
+                  onClick={() =>
+                    navigate(`/cliente/${c.id}`, { state: { cliente: c } })
+                  }
+                >
                   <div className="avatar">{c.nombre.charAt(0).toUpperCase()}</div>
                   <div className="client-info">
                     <strong>{c.nombre}</strong>
@@ -136,9 +141,15 @@ export default function Dashboard() {
                     {c.cuentas} {c.cuentas === 1 ? "cuenta" : "cuentas"}
                   </span>
                   <button
-                    className="btn-delete"
+                    /*</li>className="btn-delete"
                     onClick={() => eliminar(c.id)}
-                    title="Eliminar"
+                    title="Eliminar"*/
+                    className="btn-delete"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      eliminar(c.id);
+                     }}
+                     title="Eliminar"
                   >
                     <FaTrash />
                   </button>
